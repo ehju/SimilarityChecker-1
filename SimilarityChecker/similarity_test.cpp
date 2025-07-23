@@ -6,6 +6,16 @@ TEST(LengthTest, SameSizeTest) {
 	int actual = s.getLengthScore("ASD", "DSA");
 	EXPECT_EQ(60, actual);
 }
+TEST(LengthTest, OverTwiceSizeTest1) {
+	Similarity s;
+	int actual = s.getLengthScore("A", "BB");
+	EXPECT_EQ(0, actual);
+}
+TEST(LengthTest, OverTwiceSizeTest2) {
+	Similarity s;
+	int actual = s.getLengthScore("BB","A");
+	EXPECT_EQ(0, actual);
+}
 
 int main() {
 	::testing::InitGoogleMock();
