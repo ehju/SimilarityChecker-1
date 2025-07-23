@@ -37,18 +37,25 @@ private:
 class CharChecker {
 public:
 	int getAlphaScore(const string& str1, const string& str2) {
+		if (isSameString(str1, str2)) {
+			return 40;
+		}
+		else {
+			return -1;
+		}
+	}
+	bool isSameString(const std::string& str1, const std::string& str2)
+	{
 		vector<char> t1;
 		vector<char> t2;
 		for (char ch : str1)
 			t1.push_back(ch);
 		for (char ch : str2)
 			t2.push_back(ch);
-
-		for (int i=0; i < str1.length();i++) {
+		for (int i = 0; i < str1.length();i++) {
 			if (t1[i] != t2[i])
-				return 0;
+				return false;
 		}
-
-		return 40;
+		return true;
 	}
 };

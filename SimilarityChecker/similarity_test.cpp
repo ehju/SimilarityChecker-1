@@ -34,7 +34,6 @@ TEST(CharCheck, SameCharTest) {
 	CharChecker app;
 	int ret = app.getAlphaScore(input1,input2);
 	EXPECT_EQ(40, ret);
-
 }
 
 int main() {
