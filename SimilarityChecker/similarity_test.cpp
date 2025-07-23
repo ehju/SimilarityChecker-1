@@ -35,6 +35,14 @@ TEST(CharCheck, SameCharTest) {
 	int ret = app.getAlphaScore(input1,input2);
 	EXPECT_EQ(40, ret);
 }
+TEST(CharCheck, AllDifferentCharTest) {
+	string input1 = "ABCD";
+	string input2 = "ZXFWJ";
+	CharChecker app;
+	int ret = app.getAlphaScore(input1, input2);
+	EXPECT_EQ(0, ret);
+}
+
 
 int main() {
 	::testing::InitGoogleMock();

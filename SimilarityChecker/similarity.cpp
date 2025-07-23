@@ -40,6 +40,9 @@ public:
 		if (isSameString(str1, str2)) {
 			return 40;
 		}
+		else if (isAllDifferent(str1, str2)) {
+			return 0;
+		}
 		else {
 			return -1;
 		}
@@ -57,5 +60,24 @@ public:
 				return false;
 		}
 		return true;
+	}
+	bool isAllDifferent(const std::string& str1, const std::string& str2)
+	{
+		vector<char> t1;
+		vector<char> t2;
+		for (char ch : str1)
+			t1.push_back(ch);
+		for (char ch : str2)
+			t2.push_back(ch);
+		int count = 0;
+		for (int i = 0; i < str1.length();i++) {
+			for (int j = 0; j < str2.length();i++) {
+				if (t1[i] != t2[j])
+					count++;
+			}
+		}
+		if (count == 0)
+			return true;
+		else return false;
 	}
 };
