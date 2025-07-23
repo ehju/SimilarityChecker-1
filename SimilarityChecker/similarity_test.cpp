@@ -1,8 +1,10 @@
 #include "gmock/gmock.h"
 #include "similarity.cpp"
 
-TEST(SimilarityTest, TryTest) {
-	EXPECT_EQ(1, 1);
+TEST(LengthTest, SameSizeTest) {
+	Similarity s;
+	int actual = s.getLengthScore("ASD", "DSA");
+	EXPECT_EQ(60, actual);
 }
 
 int main() {
