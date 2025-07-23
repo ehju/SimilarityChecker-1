@@ -1,35 +1,31 @@
 #include "gmock/gmock.h"
 #include "similarity.cpp"
 
+using namespace testing;
 
-TEST(LengthTest, SameSizeTest) {
+class LengthTestFixture : public Test{
+public:
 	Similarity s;
-	int actual = s.getLengthScore("ASD", "DSA");
-	EXPECT_EQ(60, actual);
+	void validateLengthTest(int expected, const string& input1, const string& input2) {
+		EXPECT_EQ(expected, s.getLengthScore(input1, input2));
+	}
+};
+
+
+TEST_F(LengthTestFixture, SameSizeTest) {
+	validateLengthTest(60, "ASD", "DSA");
 }
-TEST(LengthTest, OverTwiceSizeTest1) {
-	Similarity s;
-	int actual = s.getLengthScore("A", "BB");
-	EXPECT_EQ(0, actual);
+TEST_F(LengthTestFixture, OverTwiceSizeTest1) {
+	validateLengthTest(0, "A", "BB");
 }
-TEST(LengthTest, OverTwiceSizeTest2) {
-	Similarity s;
-	int actual = s.getLengthScore("BB","A");
-	EXPECT_EQ(0, actual);
+TEST_F(LengthTestFixture, OverTwiceSizeTest2) {
+	validateLengthTest(0, "BB", "A");
 }
-TEST(LengthText, PartialPointTest) {
-	Similarity s;
-	string input1 = "AAABB";
-	string input2 = "BAA";
-	int actual = s.getLengthScore(input1, input2);
-	EXPECT_EQ(20, actual);
+TEST_F(LengthTestFixture, PartialPointTest) {
+	validateLengthTest(20, "AAABB", "BAA");
 }
-TEST(LengthText, PartialPointTest2) {
-	Similarity s;
-	string input1 = "AA";
-	string input2 = "AAE";
-	int actual = s.getLengthScore(input1, input2);
-	EXPECT_EQ(30, actual);
+TEST_F(LengthTestFixture, PartialPointTest2) {
+	validateLengthTest(30, "AA", "AAE");
 }
 
 
