@@ -1,5 +1,7 @@
 #include <string>
+#include <vector>
 using namespace std;
+
 
 class Similarity {
 public:
@@ -29,5 +31,24 @@ private:
 	bool isSameLength(int longer, int shorter)
 	{
 		return longer==shorter;
+	}
+};
+
+class CharChecker {
+public:
+	int getAlphaScore(const string& str1, const string& str2) {
+		vector<char> t1;
+		vector<char> t2;
+		for (char ch : str1)
+			t1.push_back(ch);
+		for (char ch : str2)
+			t2.push_back(ch);
+
+		for (int i=0; i < str1.length();i++) {
+			if (t1[i] != t2[i])
+				return 0;
+		}
+
+		return 40;
 	}
 };

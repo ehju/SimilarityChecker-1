@@ -28,6 +28,14 @@ TEST_F(LengthTestFixture, PartialPointTest2) {
 	validateLengthTest(30, "AA", "AAE");
 }
 
+TEST(CharCheck, SameCharTest) {
+	string input1 = "ABC";
+	string input2 = "ABC";
+	CharChecker app;
+	int ret = app.getAlphaScore(input1,input2);
+	EXPECT_EQ(40, ret);
+
+}
 
 int main() {
 	::testing::InitGoogleMock();
